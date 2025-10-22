@@ -3,6 +3,8 @@ from abc import ABC, abstractmethod
 from gilded_rose import Item
 
 
+MAX_QUALITY = 50
+
 class GildedRoseItem(ABC):
     def __init__(self, name: str, sell_in: int, quality: int):
         self.item = Item(name, sell_in, quality)
@@ -76,10 +78,10 @@ class AgedBrieItem(GildedRoseItem):
     def update_quality(self):
         self.sell_in = self.sell_in - 1
 
-        if self.sell_in >= 0 and self.quality < 50:
-            self.quality = self.quality + 1
-        elif self.sell_in < 0 and self.quality <= 48:
-            self.quality = self.quality + 2
+        if self.sell_in >= 0:
+            self.quality = min(self.quality + 1, MAX_QUALITY)
+        elif self.sell_in < 0:
+            self.quality = min(self.quality + 2, MAX_QUALITY)
 
 
 class BackstagePassItem(GildedRoseItem):
@@ -88,8 +90,8 @@ class BackstagePassItem(GildedRoseItem):
         if self.sell_in < 0:
             self.quality = 0
         elif self.sell_in < 5:
-            self.quality = min(self.quality + 3, 50)
+            self.quality = min(self.quality + 3, MAX_QUALITY)
         elif self.sell_in < 10:
-            self.quality = min(self.quality + 2, 50)
+            self.quality = min(self.quality + 2, MAX_QUALITY)
         else:
-            self.quality = min(self.quality + 1, 50)
+            self.quality = min(self.quality + 1, MAX_QUALITY)
