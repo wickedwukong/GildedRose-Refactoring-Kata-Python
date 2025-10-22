@@ -3,16 +3,7 @@ from gilded_rose import Item
 
 class MyItem(Item):
     def update_quality(self):
-        if self.quality > 0:
-            if self.name != "Sulfuras, Hand of Ragnaros":
-                self.quality = self.quality - 1
-
-        if self.name != "Sulfuras, Hand of Ragnaros":
-            self.sell_in = self.sell_in - 1
-        if self.sell_in < 0:
-            if self.quality > 0:
-                if self.name != "Sulfuras, Hand of Ragnaros":
-                    self.quality = self.quality - 1
+        pass
 
     @staticmethod
     def make_item(name: str, sell_in: int, quality: int):
@@ -23,8 +14,21 @@ class MyItem(Item):
         elif name == "Backstage passes to a TAFKAL80ETC concert":
             return BackstagePassItem(name, sell_in, quality)
         else:
-            return MyItem(name, sell_in, quality)
+            return RegularItem(name, sell_in, quality)
 
+
+class RegularItem(MyItem):
+    def update_quality(self):
+        if self.quality > 0:
+            if self.name != "Sulfuras, Hand of Ragnaros":
+                self.quality = self.quality - 1
+
+        if self.name != "Sulfuras, Hand of Ragnaros":
+            self.sell_in = self.sell_in - 1
+        if self.sell_in < 0:
+            if self.quality > 0:
+                if self.name != "Sulfuras, Hand of Ragnaros":
+                    self.quality = self.quality - 1
 
 # Conjured items degrade in quality twice as fast
 class ConjuredItem(MyItem):
