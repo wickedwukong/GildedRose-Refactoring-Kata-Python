@@ -1,7 +1,10 @@
+from abc import ABC, abstractmethod
+
 from gilded_rose import Item
 
 
-class MyItem(Item):
+class GildedRoseItem(Item, ABC):
+    @abstractmethod
     def update_quality(self):
         pass
 
@@ -17,7 +20,7 @@ class MyItem(Item):
             return RegularItem(name, sell_in, quality)
 
 
-class RegularItem(MyItem):
+class RegularItem(GildedRoseItem):
     def update_quality(self):
         if self.quality > 0:
             if self.name != "Sulfuras, Hand of Ragnaros":
@@ -31,7 +34,7 @@ class RegularItem(MyItem):
                     self.quality = self.quality - 1
 
 # Conjured items degrade in quality twice as fast
-class ConjuredItem(MyItem):
+class ConjuredItem(GildedRoseItem):
     def update_quality(self):
         self.sell_in = self.sell_in - 1
 
@@ -41,7 +44,7 @@ class ConjuredItem(MyItem):
             self.quality = self.quality - 1
 
 
-class AgedBrieItem(MyItem):
+class AgedBrieItem(GildedRoseItem):
     def update_quality(self):
         self.sell_in = self.sell_in - 1
 
@@ -51,7 +54,7 @@ class AgedBrieItem(MyItem):
             self.quality = self.quality + 2
 
 
-class BackstagePassItem(MyItem):
+class BackstagePassItem(GildedRoseItem):
     def update_quality(self):
         self.sell_in = self.sell_in - 1
         if self.sell_in < 0:
