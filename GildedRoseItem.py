@@ -3,10 +3,16 @@ from abc import ABC, abstractmethod
 from gilded_rose import Item
 
 
-class GildedRoseItem(Item, ABC):
+class GildedRoseItem(ABC):
+    def __init__(self, name: str, sell_in: int, quality: int):
+        self.item = Item(name, sell_in, quality)
+
     @abstractmethod
     def update_quality(self):
         pass
+
+    def __repr__(self):
+        return "%s, %s, %s" % (self.item.name, self.item.sell_in, self.item.quality)
 
     @staticmethod
     def make_item(name: str, sell_in: int, quality: int):
@@ -27,43 +33,43 @@ class SulfurasItem(GildedRoseItem):
 
 class RegularItem(GildedRoseItem):
     def update_quality(self):
-        if self.quality > 0:
-            self.quality = self.quality - 1
+        if self.item.quality > 0:
+            self.item.quality = self.item.quality - 1
 
-        self.sell_in = self.sell_in - 1
+        self.item.sell_in = self.item.sell_in - 1
 
-        if self.sell_in < 0 < self.quality:
-            self.quality = self.quality - 1
+        if self.item.sell_in < 0 < self.item.quality:
+            self.item.quality = self.item.quality - 1
 
 # Conjured items degrade in quality twice as fast
 class ConjuredItem(GildedRoseItem):
     def update_quality(self):
-        self.sell_in = self.sell_in - 1
+        self.item.sell_in = self.item.sell_in - 1
 
-        if self.sell_in < 0 and self.quality >= 2:
-            self.quality = self.quality - 2
-        elif self.quality >= 1:
-            self.quality = self.quality - 1
+        if self.item.sell_in < 0 and self.item.quality >= 2:
+            self.item.quality = self.item.quality - 2
+        elif self.item.quality >= 1:
+            self.item.quality = self.item.quality - 1
 
 
 class AgedBrieItem(GildedRoseItem):
     def update_quality(self):
-        self.sell_in = self.sell_in - 1
+        self.item.sell_in = self.item.sell_in - 1
 
-        if self.sell_in >= 0 and self.quality < 50:
-            self.quality = self.quality + 1
-        elif self.sell_in < 0 and self.quality <= 48:
-            self.quality = self.quality + 2
+        if self.item.sell_in >= 0 and self.item.quality < 50:
+            self.item.quality = self.item.quality + 1
+        elif self.item.sell_in < 0 and self.item.quality <= 48:
+            self.item.quality = self.item.quality + 2
 
 
 class BackstagePassItem(GildedRoseItem):
     def update_quality(self):
-        self.sell_in = self.sell_in - 1
-        if self.sell_in < 0:
-            self.quality = 0
-        elif self.sell_in < 5:
-            self.quality = min(self.quality + 3, 50)
-        elif self.sell_in < 10:
-            self.quality = min(self.quality + 2, 50)
+        self.item.sell_in = self.item.sell_in - 1
+        if self.item.sell_in < 0:
+            self.item.quality = 0
+        elif self.item.sell_in < 5:
+            self.item.quality = min(self.item.quality + 3, 50)
+        elif self.item.sell_in < 10:
+            self.item.quality = min(self.item.quality + 2, 50)
         else:
-            self.quality = min(self.quality + 1, 50)
+            self.item.quality = min(self.item.quality + 1, 50)
