@@ -34,7 +34,7 @@ class GildedRoseItem(ABC):
         pass
 
     def __repr__(self):
-        return "%s, %s, %s" % (self.name, self.sell_in, self.quality)
+        return f"{self.name}, {self.sell_in}, {self.quality}"
 
     @staticmethod
     def make_item(name: str, sell_in: int, quality: int):

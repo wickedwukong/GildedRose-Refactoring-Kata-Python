@@ -27,7 +27,7 @@ def main():
     if len(sys.argv) > 1:
         days = int(sys.argv[1]) + 1
     for day in range(days):
-        print("-------- day %s --------" % day)
+        print(f"-------- day {day} --------")
         print("name, sellIn, quality")
         for item in items:
             print(item)
