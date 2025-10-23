@@ -20,5 +20,6 @@ def test_gilded_rose_approvals():
 
     verify(answer, reporter=PythonNativeReporter())
 
+
 if __name__ == "__main__":
     test_gilded_rose_approvals()
