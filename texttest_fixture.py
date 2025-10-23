@@ -1,5 +1,5 @@
 from gilded_rose import GildedRose
-from GildedRoseItem import GildedRoseItem
+from gilded_rose_item import GildedRoseItem
 
 
 def main() -> None:

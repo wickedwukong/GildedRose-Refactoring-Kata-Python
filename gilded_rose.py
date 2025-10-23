@@ -1,4 +1,4 @@
-from GildedRoseItem import GildedRoseItem
+from gilded_rose_item import GildedRoseItem
 
 
 class GildedRose:

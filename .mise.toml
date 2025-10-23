@@ -37,7 +37,7 @@ run = "ruff format --check ."
 
 [tasks.typecheck]
 description = "Type check with mypy"
-run = "mypy gilded_rose.py GildedRoseItem.py texttest_fixture.py tests/"
+run = "mypy gilded_rose.py gilded_rose_item.py texttest_fixture.py tests/"
 
 [tasks.install]
 description = "Install dependencies with uv"
