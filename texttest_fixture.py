@@ -2,7 +2,7 @@ from gilded_rose import GildedRose
 from GildedRoseItem import GildedRoseItem
 
 
-def main():
+def main() -> None:
     print("OMGHAI!")
     items = [
         GildedRoseItem.make_item(name="+5 Dexterity Vest", sell_in=10, quality=20),

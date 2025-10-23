@@ -5,7 +5,7 @@ from GildedRoseItem import GildedRoseItem
 
 
 class GildedRoseTest(unittest.TestCase):
-    def test_foo(self):
+    def test_foo(self) -> None:
         items = [GildedRoseItem.make_item("foo", 0, 0)]
         gilded_rose = GildedRose(items)
         gilded_rose.update_quality()

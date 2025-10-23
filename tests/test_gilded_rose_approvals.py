@@ -7,12 +7,12 @@ from approvaltests.reporters import PythonNativeReporter
 from texttest_fixture import main
 
 
-def test_gilded_rose_approvals():
+def test_gilded_rose_approvals() -> None:
     orig_sysout = sys.stdout
     try:
         fake_stdout = io.StringIO()
         sys.stdout = fake_stdout
-        sys.argv = ["texttest_fixture.py", 30]
+        sys.argv = ["texttest_fixture.py", "30"]
         main()
         answer = fake_stdout.getvalue()
     finally:

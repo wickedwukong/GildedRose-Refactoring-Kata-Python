@@ -1,8 +1,8 @@
 class GildedRose:
-    def __init__(self, items):
+    def __init__(self, items: list):
         self.items = items
 
-    def update_quality(self):
+    def update_quality(self) -> None:
         for item in self.items:
             item.update_quality()
 
