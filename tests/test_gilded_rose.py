@@ -1,8 +1,7 @@
-# -*- coding: utf-8 -*-
 import unittest
 
-from GildedRoseItem import GildedRoseItem
 from gilded_rose import GildedRose
+from GildedRoseItem import GildedRoseItem
 
 
 class GildedRoseTest(unittest.TestCase):
@@ -12,6 +11,6 @@ class GildedRoseTest(unittest.TestCase):
         gilded_rose.update_quality()
         self.assertEqual("foo", items[0].name)
 
-        
+
 if __name__ == '__main__':
     unittest.main()

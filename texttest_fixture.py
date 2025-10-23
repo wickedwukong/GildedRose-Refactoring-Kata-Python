@@ -1,8 +1,6 @@
-# -*- coding: utf-8 -*-
-from __future__ import print_function
 
-from GildedRoseItem import GildedRoseItem
 from gilded_rose import *
+from GildedRoseItem import GildedRoseItem
 
 
 def main():

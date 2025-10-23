@@ -2,7 +2,6 @@ from abc import ABC, abstractmethod
 
 from gilded_rose import Item
 
-
 MAX_QUALITY = 50
 
 class GildedRoseItem(ABC):
