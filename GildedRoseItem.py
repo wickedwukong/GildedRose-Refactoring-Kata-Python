@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from gilded_rose import Item
+from item import Item
 
 MAX_QUALITY = 50
 
